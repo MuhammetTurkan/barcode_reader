@@ -6,12 +6,11 @@
  */
 
 import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import {View} from 'react-native';
+import BarcodeScreen from './screens/Barcode';
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  return <SafeAreaView></SafeAreaView>;
+  return <BarcodeScreen />;
 }
 
 export default App;
