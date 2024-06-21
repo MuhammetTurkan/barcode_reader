@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {RootStackParamList} from '../navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   View,
   Text,
@@ -11,17 +13,19 @@ import BarcodeInput from '../common/BarcodeInput';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import {RNCamera} from 'react-native-camera';
 
-interface ScanerProps {
-  data: string;
-  type: string;
+type Navigation = NativeStackNavigationProp<
+  RootStackParamList,
+  'Barcode',
+  undefined
+>;
+
+interface Props {
+  navigation: Navigation;
 }
 
-export default function BarcodeScreen() {
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+export default function BarcodeScreen({navigation}: Props) {
   const [isTrue, setTrue] = useState(false);
   const [text, setText] = useState('');
-
-  //What happens when we scan the bar code
 
   return (
     <View style={styles.headContainer}>
@@ -48,7 +52,7 @@ export default function BarcodeScreen() {
           </TouchableOpacity>
         )}
       </View>
-      <BarcodeInput barcodeText={text} />
+      <BarcodeInput barcodeText={text} navigation={navigation} />
     </View>
   );
 }

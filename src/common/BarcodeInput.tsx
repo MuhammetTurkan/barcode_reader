@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import {RootStackParamList} from '../navigation';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {
   Text,
   TextInput,
@@ -9,11 +11,14 @@ import {
 } from 'react-native';
 import Colors from '../Colors';
 
+type Navigation = NativeStackNavigationProp<RootStackParamList, 'Barcode'>;
+
 interface Props {
   barcodeText: string;
+  navigation: Navigation;
 }
 
-export default function BarcodeInput({barcodeText}: Props) {
+export default function BarcodeInput({barcodeText, navigation}: Props) {
   const [text, setText] = useState('');
 
   useEffect(() => {
@@ -28,7 +33,9 @@ export default function BarcodeInput({barcodeText}: Props) {
       <View style={styles.btnContainer}>
         <TextInput value={text} onChangeText={setText} style={styles.input} />
 
-        <TouchableOpacity style={styles.submitButton}>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => navigation.push('SearchResult', {text: text})}>
           <Text style={styles.submitText}>SEARCH</Text>
         </TouchableOpacity>
       </View>
