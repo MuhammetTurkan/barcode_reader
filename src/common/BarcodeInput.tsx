@@ -22,12 +22,14 @@ export default function BarcodeInput({barcodeText}: Props) {
 
   return (
     <>
-      <Text style={styles.label}>Takip no, müşteri kodu yada adı girin</Text>
+      <Text style={styles.label}>
+        Kameraya barcode okutun veya bir barcode giriniz
+      </Text>
       <View style={styles.btnContainer}>
         <TextInput value={text} onChangeText={setText} style={styles.input} />
 
         <TouchableOpacity style={styles.submitButton}>
-          <Text style={styles.submitText}>ARA</Text>
+          <Text style={styles.submitText}>SEARCH</Text>
         </TouchableOpacity>
       </View>
     </>
@@ -44,10 +46,10 @@ const styles = StyleSheet.create({
   label: {
     marginTop: 10,
     color: '#333',
-    fontSize: 18,
+    fontSize: 15,
     paddingStart: 18,
     width: '100%',
-    marginBottom: 2,
+    marginBottom: 5,
   },
   input: {
     color: Colors.primaryText,
@@ -62,15 +64,16 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    marginStart: 10,
     width: '20%',
     alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 3,
     paddingVertical: 16,
     backgroundColor: Colors.darkBackground,
     borderRadius: 16,
   },
   submitText: {
-    fontSize: 19,
+    fontSize: 16,
     color: Colors.secondaryText,
   },
 });
